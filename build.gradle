@@ -37,7 +37,7 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jooq'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.retry:spring-retry'
 	runtimeOnly 'mysql:mysql-connector-java:8.0.15'
 
 	implementation 'org.jooq:jooq'
@@ -74,7 +74,7 @@ jooq {
 	fast_writing(sourceSets.main) {
 		jdbc {
 			driver = 'com.mysql.cj.jdbc.Driver'
-			url = 'jdbc:mysql://127.0.0.1:3306/fast_writing?nullNamePatternMatchesAll=true&createDatabaseIfNotExist=true&useSSL=false'
+			url = 'jdbc:mysql://fast-writing-db:3306/fast_writing?nullNamePatternMatchesAll=true&createDatabaseIfNotExist=true&useSSL=false'
 			user = 'root'
 			password = 'fast_writing'
 		}
@@ -102,6 +102,8 @@ jooq {
 		}
 	}
 }
+
+generateFast_writingJooqSchemaSource.onlyIf { name != 'build' }
 
 factlin {
 	dbUrl = 'jdbc:mysql://127.0.0.1:3306/fast_writing'
