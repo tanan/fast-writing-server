@@ -103,7 +103,7 @@ jooq {
 	}
 }
 
-//generateFast_writingJooqSchemaSource.onlyIf { name != 'build' }
+generateFast_writingJooqSchemaSource.onlyIf { name != 'build' }
 
 factlin {
 	dbUrl = 'jdbc:mysql://127.0.0.1:3306/fast_writing'
