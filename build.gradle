@@ -74,9 +74,9 @@ jooq {
 	fast_writing(sourceSets.main) {
 		jdbc {
 			driver = 'com.mysql.cj.jdbc.Driver'
-			url = 'jdbc:mysql://fast-writing-db:3306/fast_writing?nullNamePatternMatchesAll=true&createDatabaseIfNotExist=true&useSSL=false'
+			url = 'jdbc:mysql://fast-writing-db:3306/fast_writing?nullNamePatternMatchesAll=true&createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false'
 			user = 'root'
-			password = 'fast_writing'
+			password = 'secret'
 		}
 		generator {
 			name = 'org.jooq.codegen.DefaultGenerator'
@@ -103,12 +103,12 @@ jooq {
 	}
 }
 
-generateFast_writingJooqSchemaSource.onlyIf { name != 'build' }
+//generateFast_writingJooqSchemaSource.onlyIf { name != 'build' }
 
 factlin {
 	dbUrl = 'jdbc:mysql://127.0.0.1:3306/fast_writing'
 	dbUser = 'root'
-	dbPassword = 'password'
+	dbPassword = 'secret'
 	dbDialect = "mariadb"
 	fixtureOutputDir = "src/test/kotlin/com/example/springbootkotlinjooq/common/fixtures"
 	fixturePackageName = "com.example.sprigbootkotlinjooq.common.fixtures"
