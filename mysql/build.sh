@@ -1,5 +1,5 @@
 #!/bin/sh
 
-tag=5.7.21
+tag=v1.0
 
 docker build --rm -t asia.gcr.io/anan-project/fast-writing-db:${tag} .

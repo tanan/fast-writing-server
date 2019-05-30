@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tag=5.7.21
+tag=v1.0
 
 docker stop fast-writing-db
 docker rm -v fast-writing-db
