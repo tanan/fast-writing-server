@@ -12,6 +12,7 @@ import org.jooq.impl.Internal;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
 import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Users;
 
 
 /**
@@ -34,6 +35,7 @@ public class Indexes {
     public static final Index CONTENTS_FK_LESSON_ID = Indexes0.CONTENTS_FK_LESSON_ID;
     public static final Index CONTENTS_PRIMARY = Indexes0.CONTENTS_PRIMARY;
     public static final Index LESSON_PRIMARY = Indexes0.LESSON_PRIMARY;
+    public static final Index USERS_PRIMARY = Indexes0.USERS_PRIMARY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -43,5 +45,6 @@ public class Indexes {
         public static Index CONTENTS_FK_LESSON_ID = Internal.createIndex("fk_lesson_id", Contents.CONTENTS, new OrderField[] { Contents.CONTENTS.LESSON_ID }, false);
         public static Index CONTENTS_PRIMARY = Internal.createIndex("PRIMARY", Contents.CONTENTS, new OrderField[] { Contents.CONTENTS.ID }, true);
         public static Index LESSON_PRIMARY = Internal.createIndex("PRIMARY", Lesson.LESSON, new OrderField[] { Lesson.LESSON.ID }, true);
+        public static Index USERS_PRIMARY = Internal.createIndex("PRIMARY", Users.USERS, new OrderField[] { Users.USERS.ID }, true);
     }
 }

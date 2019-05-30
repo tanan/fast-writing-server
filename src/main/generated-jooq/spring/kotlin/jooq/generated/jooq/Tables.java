@@ -8,6 +8,7 @@ import javax.annotation.Generated;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
 import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Users;
 
 
 /**
@@ -32,4 +33,9 @@ public class Tables {
      * アーティスト
      */
     public static final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
+
+    /**
+     * ユーザー
+     */
+    public static final Users USERS = spring.kotlin.jooq.generated.jooq.tables.Users.USERS;
 }

@@ -2,6 +2,14 @@ create database fast_writing;
 
 use fast_writing;
 
+create table users (
+	id int primary key not null auto_increment comment 'id',
+	login_id varchar(64) not null comment 'ログインID',
+	password varchar(128) not null comment 'パスワード',
+	create_time timestamp not null default CURRENT_TIMESTAMP,
+	update_time timestamp not null default CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ユーザー';
+
 create table lesson (
 	id int primary key not null auto_increment comment 'id',
 	title varchar(45) not null comment '名前'
@@ -18,11 +26,21 @@ create table contents (
         ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ミュージック';
 
-insert into lesson (id, title) value (1, 'test1');
-insert into lesson (id, title) value (2, 'test2');
-insert into lesson (id, title) value (3, 'Making Friends');
-insert into lesson (id, title) value (4, 'Summary Lesson 1');
-insert into lesson (id, title) value (5, 'Preparation');
+insert into lesson (id, title) value
+(1, 'Going to America'),
+(2, 'Setting In'),
+(3, 'Making Friends'),
+(4, 'Summary Lesson 1'),
+(5, 'Building Relationships'),
+(6, 'Preparation'),
+(7, 'Preparation'),
+(8, 'Preparation'),
+(9, 'Preparation'),
+(10, 'Preparation'),
+(11, 'Preparation'),
+(12, 'Preparation'),
+(13, 'Preparation'),
+(14, 'Preparation');
 
 insert into contents (lesson_id, jp_text, en_text) value
 (1, "私は働きます", "I work"),

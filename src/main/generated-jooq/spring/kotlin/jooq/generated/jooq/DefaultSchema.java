@@ -16,6 +16,7 @@ import org.jooq.impl.SchemaImpl;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
 import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Users;
 
 
 /**
@@ -31,7 +32,7 @@ import spring.kotlin.jooq.generated.jooq.tables.Lesson;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = 431900397;
+    private static final long serialVersionUID = -1688229928;
 
     /**
      * The reference instance of <code></code>
@@ -47,6 +48,11 @@ public class DefaultSchema extends SchemaImpl {
      * アーティスト
      */
     public final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
+
+    /**
+     * ユーザー
+     */
+    public final Users USERS = spring.kotlin.jooq.generated.jooq.tables.Users.USERS;
 
     /**
      * No further instances allowed
@@ -74,6 +80,7 @@ public class DefaultSchema extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Contents.CONTENTS,
-            Lesson.LESSON);
+            Lesson.LESSON,
+            Users.USERS);
     }
 }
