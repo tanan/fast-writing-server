@@ -15,6 +15,6 @@ class UserService(
         val user = userRepository.find(loginId)
         val moshi = Moshi.Builder().build()
         val adapter = moshi.adapter(User::class.java)
-        return adapter.toJson(User(user.id, user.loginId, ""))
+        return adapter.toJson(User(user.id, user.loginId, "", ""))
     }
 }

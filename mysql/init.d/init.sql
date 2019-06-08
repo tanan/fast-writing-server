@@ -26,6 +26,9 @@ create table contents (
         ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ミュージック';
 
+insert into users (id, login_id, password) value
+(1, 'toshifumi.anan', '$2a$04$V.Ztd707YKlKcjRQ.z6Bh.0LpHnTBuU5hMgkBbxdDxch1LriKTiBW');
+
 insert into lesson (id, title) value
 (1, 'Going to America'),
 (2, 'Setting In'),
