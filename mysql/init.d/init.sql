@@ -93,4 +93,14 @@ insert into contents (lesson_id, jp_text, en_text) value
 (7, "返品するのは難しいかもしれません。一度開封したら", "It may be difficult to return the product once you open."),
 (7, "ちょっと遅れるかもしれません。その会議に", "I might be a little late for the meeting."),
 (7, "もう少しよくこの書類を見てもよろしいですか？", "May I take a closer look at the document?"),
-(7, "皆さんがご自分たちのプロジェクトチームを誇りに思うのは当然です", "You may well be proud of your project team.");
+(7, "皆さんがご自分たちのプロジェクトチームを誇りに思うのは当然です", "You may well be proud of your project team."),
+(9, "我々は世界市場を視野に入れるべきです", "We should eye the global market."),
+(9, "上司はもう間も無く来るはずです。", "Our boss should be here at any moment."),
+(9, "一体どうして、また、期日を延期するんですか！", "How should you extend the deadline again!"),
+(9, "そのマーケティング戦略について簡単な説明をしましょうか。", "Shall I give you a brief description of the marketing strategy."),
+(9, "時間もなくなってきていますので、次の議題に移りましょう。", "We are almost running out of the time, so shall we move on to the next agenda?"),
+(9, "あと１時間でこの仕事を終わらせなきゃならない！", "I must get this work done in an hour!"),
+(9, "我々は来週までに新支社の建設請負人を見つけざるを得ません。", "We have to find a contractor of the constraction for the new branch by next week."),
+(9, "我々は、もう、予算削減について心配する必要はありません。", "We don't have to worry about cutting down on the budget anymore."),
+(9, "日本食と言えば、（絶対）お寿司を食べてみるべきです。", "you must try sushi when it comes to Japanese food."),
+(9, "もう少し臨機応変にした方が良いのではないかと思います。", "I should say you ought to be a little more tactful.");

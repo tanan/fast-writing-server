@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import javax.servlet.http.HttpServletResponse.SC_OK
 import javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED
 
@@ -38,6 +41,16 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
                 .disable()
             .exceptionHandling()
                 .authenticationEntryPoint {_, res, _ -> res.status = SC_UNAUTHORIZED }
+    }
+
+    fun corsConfigurationSource(): CorsConfigurationSource {
+        val corsConfiguration = CorsConfiguration()
+        corsConfiguration.addAllowedOrigin("http://localhost:5001")
+        corsConfiguration.allowCredentials = true
+        corsConfiguration.addAllowedMethod(CorsConfiguration.ALL)
+        val corsSource = UrlBasedCorsConfigurationSource()
+        corsSource.registerCorsConfiguration("/login", corsConfiguration)
+        return corsSource
     }
 
     @Bean
