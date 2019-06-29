@@ -39,6 +39,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jooq'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.retry:spring-retry'
+	implementation 'io.jsonwebtoken:jjwt:0.9.0'
 	runtimeOnly 'mysql:mysql-connector-java:8.0.15'
 
 	implementation 'org.jooq:jooq'

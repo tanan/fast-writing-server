@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*
 class LessonController(private val lessonService: LessonService) {
     @GetMapping("")
     fun get(): String {
+
         return lessonService.getAll()
     }
 

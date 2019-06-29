@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
@@ -25,17 +24,15 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
                 .antMatchers("/login").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/system/**").permitAll()
-                .antMatchers("/lessons/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-            .formLogin()
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .successHandler { _, res, _ -> res.status = SC_OK }
-                .failureHandler { _, res, _ -> res.status = SC_UNAUTHORIZED }
-                .and()
+            .addFilter(JWTAuthenticationFilter(authenticationManager()))
+            .addFilter(JWTAuthorizationFilter(authenticationManager()))
             .logout()
                 .logoutSuccessHandler {_, res, _ -> res.status = SC_OK }
+                .and()
+            .cors()
+                .configurationSource(corsConfigurationSource())
                 .and()
             .csrf()
                 .disable()
@@ -48,13 +45,14 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
         corsConfiguration.addAllowedOrigin("http://localhost:5001")
         corsConfiguration.allowCredentials = true
         corsConfiguration.addAllowedMethod(CorsConfiguration.ALL)
+        corsConfiguration.addAllowedHeader(CorsConfiguration.ALL)
         val corsSource = UrlBasedCorsConfigurationSource()
         corsSource.registerCorsConfiguration("/login", corsConfiguration)
         return corsSource
     }
 
     @Bean
-    fun encoder(): PasswordEncoder {
+    fun encoder(): BCryptPasswordEncoder {
         return BCryptPasswordEncoder(4)
     }
 }

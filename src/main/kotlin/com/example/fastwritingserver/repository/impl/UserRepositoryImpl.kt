@@ -34,6 +34,7 @@ class UserRepositoryImpl(private val context: DSLContext) : UserRepository {
     }
 
     override fun findByLoginId(loginId: String): User {
+        println(loginId)
         return context.select()
                 .from(USERS)
                 .where(USERS.LOGIN_ID.eq(loginId))
