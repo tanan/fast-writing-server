@@ -37,8 +37,8 @@ class LessonService(
 
     @Transactional
     fun createContent(lessonId: Int, content: Content): String {
-        val content = contentsRepository.create(lessonId, content)
-        return toJson(content)
+        val contentWithId = contentsRepository.create(lessonId, content)
+        return toJson(contentWithId)
     }
 
     fun list(id: Int) : String {

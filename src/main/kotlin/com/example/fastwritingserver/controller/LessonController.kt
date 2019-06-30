@@ -2,7 +2,6 @@ package com.example.fastwritingserver.controller
 
 import com.example.fastwritingserver.controller.request.LessonContentRegisterRequest
 import com.example.fastwritingserver.controller.request.LessonRegisterRequest
-import com.example.fastwritingserver.controller.request.UserRegisterRequest
 import com.example.fastwritingserver.model.Content
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.service.LessonService
