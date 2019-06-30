@@ -8,4 +8,6 @@ interface ContentsRepository {
     fun find(id: Int): Contents
 
     fun findByLessonID(id: Int): List<Contents>
+
+    fun create(lessonId: Int, contents: Contents): Contents
 }

@@ -25,6 +25,14 @@ class LessonRepositoryImpl(private val context: DSLContext) : LessonRepository {
                 .map { toModel(it as LessonRecord) }
     }
 
+    override fun create(lesson: Lesson): Lesson {
+        return context.insertInto(LESSON)
+                .set(LESSON.TITLE, lesson.title)
+                .returning()
+                .fetchOne()
+                .let { toModel(it) }
+    }
+
     private fun toModel(r: LessonRecord): Lesson {
         return Lesson(r.id, r.title, listOf())
     }

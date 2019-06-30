@@ -6,4 +6,6 @@ interface LessonRepository {
     fun findAll(): List<Lesson>
 
     fun find(id: Int): Lesson
+
+    fun create(lesson: Lesson): Lesson
 }

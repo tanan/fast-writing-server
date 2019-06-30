@@ -1,6 +1,7 @@
 package com.example.fastwritingserver.repository.impl
 
 import com.example.fastwritingserver.model.Contents
+import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.repository.ContentsRepository
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
@@ -30,6 +31,16 @@ class ContentsRepositoryImpl(private val context: DSLContext) : ContentsReposito
                 .where(CONTENTS.LESSON_ID.eq(id))
                 .fetch()
                 .map { toModel(it as ContentsRecord) }
+    }
+
+    override fun create(lessonId: Int, contents: Contents): Contents {
+        return context.insertInto(CONTENTS)
+                .set(CONTENTS.LESSON_ID, lessonId)
+                .set(CONTENTS.EN_TEXT, contents.englishText)
+                .set(CONTENTS.JP_TEXT, contents.japaneseText)
+                .returning()
+                .fetchOne()
+                .let { toModel(it) }
     }
 
     private fun toModel(r: ContentsRecord) : Contents {
