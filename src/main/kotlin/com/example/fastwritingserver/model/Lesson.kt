@@ -3,5 +3,5 @@ package com.example.fastwritingserver.model
 data class Lesson(
         val id: Int,
         val title: String,
-        val contents: List<Contents>
+        val contents: List<Content>
 )

@@ -2,7 +2,7 @@ package com.example.fastwritingserver.model
 
 import com.squareup.moshi.Json
 
-data class Contents(
+data class Content(
         val id: Int,
         @field:Json(name = "jp_text")
         val japaneseText: String,

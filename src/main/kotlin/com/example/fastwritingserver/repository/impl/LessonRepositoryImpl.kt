@@ -1,6 +1,5 @@
 package com.example.fastwritingserver.repository.impl
 
-import com.example.fastwritingserver.model.Contents
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.repository.LessonRepository
 import org.jooq.DSLContext

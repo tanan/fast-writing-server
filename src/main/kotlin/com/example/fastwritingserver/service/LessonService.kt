@@ -1,5 +1,6 @@
 package com.example.fastwritingserver.service
 
+import com.example.fastwritingserver.model.Content
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.repository.ContentsRepository
 import com.example.fastwritingserver.repository.LessonRepository
@@ -25,14 +26,36 @@ class LessonService(
     fun get(id: Int) : String {
         val lesson = lessonRepository.find(id)
         val contents = contentsRepository.findByLessonID(lesson.id)
-        val moshi = Moshi.Builder().build()
-        val adapter = moshi.adapter(Lesson::class.java)
-        return adapter.toJson(Lesson(lesson.id, lesson.title, contents))
+        return toJson(lesson, contents)
+    }
+
+    @Transactional
+    fun create(lesson: Lesson) : String {
+        val lessonWithId = lessonRepository.create(lesson)
+        return toJson(lessonWithId, listOf())
+    }
+
+    @Transactional
+    fun createContent(lessonId: Int, content: Content): String {
+        val content = contentsRepository.create(lessonId, content)
+        return toJson(content)
     }
 
     fun list(id: Int) : String {
         val moshi = Moshi.Builder().build()
         val adapter = moshi.adapter(Lesson::class.java)
         return adapter.toJson(lessonRepository.find(id))
+    }
+
+    private fun toJson(lesson: Lesson, contents: List<Content>): String {
+        val moshi = Moshi.Builder().build()
+        val adapter = moshi.adapter(Lesson::class.java)
+        return adapter.toJson(Lesson(lesson.id, lesson.title, contents))
+    }
+
+    private fun toJson(content: Content): String {
+        val moshi = Moshi.Builder().build()
+        val adapter = moshi.adapter(Content::class.java)
+        return adapter.toJson(content)
     }
 }

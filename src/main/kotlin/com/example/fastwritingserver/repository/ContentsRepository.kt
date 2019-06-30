@@ -1,13 +1,13 @@
 package com.example.fastwritingserver.repository
 
-import com.example.fastwritingserver.model.Contents
+import com.example.fastwritingserver.model.Content
 
 interface ContentsRepository {
-    fun findAll(): List<Contents>
+    fun findAll(): List<Content>
 
-    fun find(id: Int): Contents
+    fun find(id: Int): Content
 
-    fun findByLessonID(id: Int): List<Contents>
+    fun findByLessonID(id: Int): List<Content>
 
-    fun create(lessonId: Int, contents: Contents): Contents
+    fun create(lessonId: Int, content: Content): Content
 }
