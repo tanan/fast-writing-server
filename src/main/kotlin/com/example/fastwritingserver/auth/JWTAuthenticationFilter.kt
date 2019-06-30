@@ -38,8 +38,6 @@ class JWTAuthenticationFilter(authenticationManager: AuthenticationManager): Use
                 .setExpiration(Date.from(expiration.toInstant()))
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
                 .compact()
-        response?.addHeader("authorization", "Bearer $token")
-
-        super.successfulAuthentication(request, response, chain, authResult)
+        response?.addHeader("access-token", token)
     }
 }

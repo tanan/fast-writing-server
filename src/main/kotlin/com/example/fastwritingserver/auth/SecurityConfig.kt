@@ -2,6 +2,7 @@ package com.example.fastwritingserver.auth
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -24,6 +25,7 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
                 .antMatchers("/login").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/system/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
             .addFilter(JWTAuthenticationFilter(authenticationManager()))
@@ -43,9 +45,11 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
     fun corsConfigurationSource(): CorsConfigurationSource {
         val corsConfiguration = CorsConfiguration()
         corsConfiguration.addAllowedOrigin("http://localhost:5001")
+        corsConfiguration.addAllowedOrigin("http://fast-writing.weeekend.work")
         corsConfiguration.allowCredentials = true
         corsConfiguration.addAllowedMethod(CorsConfiguration.ALL)
         corsConfiguration.addAllowedHeader(CorsConfiguration.ALL)
+        corsConfiguration.addExposedHeader("access-token")
         val corsSource = UrlBasedCorsConfigurationSource()
         corsSource.registerCorsConfiguration("/login", corsConfiguration)
         return corsSource

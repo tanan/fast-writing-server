@@ -7,7 +7,7 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:5001"], allowCredentials = "true")
+@CrossOrigin(origins = ["http://localhost:5001", "http://fast-writing.weeekend.work"], allowCredentials = "true")
 @RequestMapping("/user")
 class UserController(val authenticateService: AuthenticateService) {
     @PostMapping("/register", consumes = [MediaType.APPLICATION_JSON_VALUE])
