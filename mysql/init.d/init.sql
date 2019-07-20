@@ -103,4 +103,14 @@ insert into contents (lesson_id, jp_text, en_text) value
 (9, "我々は来週までに新支社の建設請負人を見つけざるを得ません。", "We have to find a contractor of the constraction for the new branch by next week."),
 (9, "我々は、もう、予算削減について心配する必要はありません。", "We don't have to worry about cutting down on the budget anymore."),
 (9, "日本食と言えば、（絶対）お寿司を食べてみるべきです。", "you must try sushi when it comes to Japanese food."),
-(9, "もう少し臨機応変にした方が良いのではないかと思います。", "I should say you ought to be a little more tactful.");
+(9, "もう少し臨機応変にした方が良いのではないかと思います。", "I should say you ought to be a little more tactful."),
+(14, "その契約を締結するかどうかと言う事は、我社にとって大きなターニングポイントです。", "Whether to make the contract or not is a major turning point for us."),
+(14, "彼らの最大の関心事は、どのようにして対外的な競争力を維持するかと言う事です。", "There biggest concern is how to remain competitive internationally."),
+(14, "皆様のたゆまぬ努力が複雑な仕事を遂行することを可能にしました。", "Your untiring efforts enabled us to accomplish the complex task."),
+(14, "会社は従業員にセミナーに参加するように奨励しています。", "The company encourages the employees to attend the seminars."),
+(14, "我々が品質に関する良い評判を得る事は必要です。", "It is necessary for us to earn a good reputation for quality."),
+(14, "我々は品質に関する良い評判を得ることが必要であると考えています。", "We think it necessary to earn a good reputation for quality."),
+(14, "したくなければ、画像の保存先を選択する必要はありません。", "You don't have to specify where to save the image unless you'd like to."),
+(14, "貴社との共同プロジェクトを展開する機会を得たことを光栄に思っております。", "We are honored to have this oppotunity to work with you on the project."),
+(14, "率直に申し上げますと、我々は早急に新しい手を打つべきです。", "To be frank, we need to take new measures immediately."),
+(14, "必要な手はずは全て整うようにしてあります。", "We are prepared to do whatever is necessary.");
