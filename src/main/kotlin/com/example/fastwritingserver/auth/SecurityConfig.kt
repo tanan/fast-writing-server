@@ -25,6 +25,7 @@ class SecurityConfig(private val service: AuthenticateService) : WebSecurityConf
                 .antMatchers("/login").permitAll()
                 .antMatchers("/user/register").permitAll()
                 .antMatchers("/system/**").permitAll()
+                .antMatchers("/lessons/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
