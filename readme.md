@@ -17,3 +17,12 @@ curl -XPOST -H "Content-Type: application/json" "fast-writing.weeekend.work/api/
   "password": "bar"
 }'
 ```
+
+- login
+```
+curl -v -XPOST -H"Content-Type: application/json" localhost:8080/login -d '
+{
+    "username": "foo",
+    "password": "bar"
+}'
+```
