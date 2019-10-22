@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*
 class UserController(val authenticateService: AuthenticateService) {
     @PostMapping("/register", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun signUp(@RequestBody request: UserRegisterRequest): String {
-        authenticateService.create(User(null, request.username, request.password, request.username))
-        return "user created"
+        return authenticateService.create(User(null, request.username, request.password, request.username))
     }
 }
