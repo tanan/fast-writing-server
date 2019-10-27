@@ -33,17 +33,10 @@ insert into lesson (id, title) value
 (1, 'Going to America'),
 (2, 'Setting In'),
 (3, 'Making Friends'),
-(4, 'Summary Lesson'),
-(5, 'Building Relationships'),
 (6, 'Setting Up a Meeting'),
 (7, 'Following Up'),
-(8, 'Preparation'),
-(9, 'Preparation'),
-(10, 'Preparation'),
-(11, 'Preparation'),
-(12, 'Preparation'),
-(13, 'Preparation'),
-(14, 'Preparation');
+(9, 'Lesson9'),
+(14, 'Lesson14');
 
 insert into contents (lesson_id, jp_text, en_text) value
 (1, "私は働きます", "I work"),
