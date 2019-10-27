@@ -32,7 +32,7 @@ import spring.kotlin.jooq.generated.jooq.tables.Users;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = -1688229928;
+    private static final long serialVersionUID = 1337000966;
 
     /**
      * The reference instance of <code></code>
@@ -45,7 +45,7 @@ public class DefaultSchema extends SchemaImpl {
     public final Contents CONTENTS = spring.kotlin.jooq.generated.jooq.tables.Contents.CONTENTS;
 
     /**
-     * アーティスト
+     * lesson
      */
     public final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
 

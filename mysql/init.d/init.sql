@@ -12,8 +12,9 @@ create table users (
 
 create table lesson (
 	id int primary key not null auto_increment comment 'id',
-	title varchar(45) not null comment '名前'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='アーティスト';
+	title varchar(45) not null comment 'タイトル',
+	description varchar(128) not null comment '説明'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='lesson';
 
 create table contents (
 	id int primary key not null auto_increment comment 'id',
@@ -29,14 +30,14 @@ create table contents (
 insert into users (id, login_id, password) value
 (1, 'toshifumi.anan', '$2a$04$V.Ztd707YKlKcjRQ.z6Bh.0LpHnTBuU5hMgkBbxdDxch1LriKTiBW');
 
-insert into lesson (id, title) value
-(1, 'Going to America'),
-(2, 'Setting In'),
-(3, 'Making Friends'),
-(6, 'Setting Up a Meeting'),
-(7, 'Following Up'),
-(9, 'Lesson9'),
-(14, 'Lesson14');
+insert into lesson (id, title, description) value
+(1, 'Going to America', 'description1'),
+(2, 'Setting In', 'description2'),
+(3, 'Making Friends', 'description3'),
+(6, 'Setting Up a Meeting', 'description6'),
+(7, 'Following Up', 'description7'),
+(9, 'Lesson9', 'description9'),
+(14, 'Lesson14', 'description14');
 
 insert into contents (lesson_id, jp_text, en_text) value
 (1, "私は働きます", "I work"),

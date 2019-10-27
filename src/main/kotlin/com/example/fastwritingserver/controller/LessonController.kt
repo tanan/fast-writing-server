@@ -36,6 +36,6 @@ class LessonController(private val lessonService: LessonService) {
 
     @PostMapping("/create", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun post(@RequestBody request: LessonRegisterRequest): String {
-        return lessonService.create(Lesson(0, request.title, listOf()))
+        return lessonService.create(Lesson(0, request.title, request.description, listOf()))
     }
 }

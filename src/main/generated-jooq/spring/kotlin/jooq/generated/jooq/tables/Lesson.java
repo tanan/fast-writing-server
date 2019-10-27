@@ -29,7 +29,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.LessonRecord;
 
 
 /**
- * アーティスト
+ * lesson
  */
 @Generated(
     value = {
@@ -41,7 +41,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.LessonRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Lesson extends TableImpl<LessonRecord> {
 
-    private static final long serialVersionUID = -147704022;
+    private static final long serialVersionUID = 1047176263;
 
     /**
      * The reference instance of <code>lesson</code>
@@ -62,9 +62,14 @@ public class Lesson extends TableImpl<LessonRecord> {
     public final TableField<LessonRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "id");
 
     /**
-     * The column <code>lesson.title</code>. 名前
+     * The column <code>lesson.title</code>. タイトル
      */
-    public final TableField<LessonRecord, String> TITLE = createField("title", org.jooq.impl.SQLDataType.VARCHAR(45).nullable(false), this, "名前");
+    public final TableField<LessonRecord, String> TITLE = createField("title", org.jooq.impl.SQLDataType.VARCHAR(45).nullable(false), this, "タイトル");
+
+    /**
+     * The column <code>lesson.description</code>. 説明
+     */
+    public final TableField<LessonRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.VARCHAR(128).nullable(false), this, "説明");
 
     /**
      * Create a <code>lesson</code> table reference
@@ -92,7 +97,7 @@ public class Lesson extends TableImpl<LessonRecord> {
     }
 
     private Lesson(Name alias, Table<LessonRecord> aliased, Field<?>[] parameters) {
-        super(alias, null, aliased, parameters, DSL.comment("アーティスト"));
+        super(alias, null, aliased, parameters, DSL.comment("lesson"));
     }
 
     public <O extends Record> Lesson(Table<O> child, ForeignKey<O, LessonRecord> key) {

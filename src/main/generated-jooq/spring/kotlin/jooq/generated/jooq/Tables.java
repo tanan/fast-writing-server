@@ -30,7 +30,7 @@ public class Tables {
     public static final Contents CONTENTS = spring.kotlin.jooq.generated.jooq.tables.Contents.CONTENTS;
 
     /**
-     * アーティスト
+     * lesson
      */
     public static final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
 

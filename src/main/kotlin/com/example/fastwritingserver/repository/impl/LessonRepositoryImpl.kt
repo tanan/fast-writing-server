@@ -33,6 +33,6 @@ class LessonRepositoryImpl(private val context: DSLContext) : LessonRepository {
     }
 
     private fun toModel(r: LessonRecord): Lesson {
-        return Lesson(r.id, r.title, listOf())
+        return Lesson(r.id, r.title, r.description, listOf())
     }
 }
