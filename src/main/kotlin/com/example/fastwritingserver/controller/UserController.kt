@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin(origins = ["http://localhost:5001", "http://fast-writing.weeekend.work"], allowCredentials = "true")
 @RequestMapping("/user")
 class UserController(val authenticateService: AuthenticateService) {
+    @GetMapping("/{id}")
+    fun get(@PathVariable(value = "id") id: String): String {
+        return authenticateService.get(id)
+    }
+
     @PostMapping("/register", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun signUp(@RequestBody request: UserRegisterRequest): String {
         return authenticateService.create(User(null, request.username, request.password, request.username))

@@ -3,18 +3,20 @@ create database fast_writing;
 use fast_writing;
 
 create table users (
-	id int primary key not null auto_increment comment 'id',
-	login_id varchar(64) not null comment 'ログインID',
-	password varchar(128) not null comment 'パスワード',
+	id int primary key not null auto_increment comment 'User ID',
+	login_id varchar(64) not null comment 'Login ID',
+	password varchar(128) not null comment 'Password',
+	nickname varchar(32) null comment 'Nickname',
+	note varchar(128) null comment 'Note',
 	create_time timestamp not null default CURRENT_TIMESTAMP,
 	update_time timestamp not null default CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ユーザー';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Users';
 
-create table lesson (
+create table lessons (
 	id int primary key not null auto_increment comment 'id',
 	title varchar(45) not null comment 'タイトル',
 	description varchar(128) not null comment '説明'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='lesson';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Lessons';
 
 create table contents (
 	id int primary key not null auto_increment comment 'id',
@@ -23,14 +25,38 @@ create table contents (
 	en_text varchar(512) not null comment 'english text',
 	CONSTRAINT fk_lesson_id
         FOREIGN KEY (lesson_id)
-        REFERENCES lesson (id)
+        REFERENCES lessons (id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Lesson Contents';
+
+create table user_defined_lessons (
+	id int primary key not null auto_increment comment 'id',
+	user_id int not null comment 'ユーザーid',
+	title varchar(45) not null comment 'タイトル',
+	description varchar(128) not null comment '説明',
+	create_time timestamp not null default CURRENT_TIMESTAMP,
+    update_time timestamp not null default CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_id
+        FOREIGN KEY (user_id)
+        REFERENCES users (id)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='User Defined Lessons';
+
+create table user_defined_contents (
+	id int primary key not null auto_increment comment 'id',
+	user_defined_lesson_id int not null comment 'lesson id',
+	jp_text varchar(512) not null comment 'japanese text',
+	en_text varchar(512) not null comment 'english text',
+	CONSTRAINT fk_user_defined_lesson_id
+        FOREIGN KEY (user_defined_lesson_id)
+        REFERENCES user_defined_lessons (id)
         ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ミュージック';
 
 insert into users (id, login_id, password) value
 (1, 'toshifumi.anan', '$2a$04$V.Ztd707YKlKcjRQ.z6Bh.0LpHnTBuU5hMgkBbxdDxch1LriKTiBW');
 
-insert into lesson (id, title, description) value
+insert into lessons (id, title, description) value
 (1, 'Going to America', 'description1'),
 (2, 'Setting In', 'description2'),
 (3, 'Making Friends', 'description3'),

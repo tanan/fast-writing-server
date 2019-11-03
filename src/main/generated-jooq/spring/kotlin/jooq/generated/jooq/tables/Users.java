@@ -30,7 +30,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.UsersRecord;
 
 
 /**
- * ユーザー
+ * Users
  */
 @Generated(
     value = {
@@ -42,7 +42,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.UsersRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users extends TableImpl<UsersRecord> {
 
-    private static final long serialVersionUID = 661212586;
+    private static final long serialVersionUID = -1840403184;
 
     /**
      * The reference instance of <code>users</code>
@@ -58,19 +58,29 @@ public class Users extends TableImpl<UsersRecord> {
     }
 
     /**
-     * The column <code>users.id</code>. id
+     * The column <code>users.id</code>. User ID
      */
-    public final TableField<UsersRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "id");
+    public final TableField<UsersRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "User ID");
 
     /**
-     * The column <code>users.login_id</code>. ログインID
+     * The column <code>users.login_id</code>. Login ID
      */
-    public final TableField<UsersRecord, String> LOGIN_ID = createField("login_id", org.jooq.impl.SQLDataType.VARCHAR(64).nullable(false), this, "ログインID");
+    public final TableField<UsersRecord, String> LOGIN_ID = createField("login_id", org.jooq.impl.SQLDataType.VARCHAR(64).nullable(false), this, "Login ID");
 
     /**
-     * The column <code>users.password</code>. パスワード
+     * The column <code>users.password</code>. Password
      */
-    public final TableField<UsersRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR(128).nullable(false), this, "パスワード");
+    public final TableField<UsersRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR(128).nullable(false), this, "Password");
+
+    /**
+     * The column <code>users.nickname</code>. Nickname
+     */
+    public final TableField<UsersRecord, String> NICKNAME = createField("nickname", org.jooq.impl.SQLDataType.VARCHAR(32), this, "Nickname");
+
+    /**
+     * The column <code>users.note</code>. Note
+     */
+    public final TableField<UsersRecord, String> NOTE = createField("note", org.jooq.impl.SQLDataType.VARCHAR(128), this, "Note");
 
     /**
      * The column <code>users.create_time</code>.
@@ -108,7 +118,7 @@ public class Users extends TableImpl<UsersRecord> {
     }
 
     private Users(Name alias, Table<UsersRecord> aliased, Field<?>[] parameters) {
-        super(alias, null, aliased, parameters, DSL.comment("ユーザー"));
+        super(alias, null, aliased, parameters, DSL.comment("Users"));
     }
 
     public <O extends Record> Users(Table<O> child, ForeignKey<O, UsersRecord> key) {

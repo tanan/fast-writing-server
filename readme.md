@@ -26,3 +26,5 @@ curl -v -XPOST -H"Content-Type: application/json" localhost:8080/login -d '
     "password": "bar"
 }'
 ```
+
+curl -v -XGET -H"Authorization: bearer {token}" -H"Content-Type: application/json" localhost:8080/user/{id}

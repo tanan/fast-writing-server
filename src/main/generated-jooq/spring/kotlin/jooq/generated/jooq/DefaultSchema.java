@@ -15,7 +15,9 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
-import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Lessons;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedContents;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedLessons;
 import spring.kotlin.jooq.generated.jooq.tables.Users;
 
 
@@ -32,7 +34,7 @@ import spring.kotlin.jooq.generated.jooq.tables.Users;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = 1337000966;
+    private static final long serialVersionUID = 1494924400;
 
     /**
      * The reference instance of <code></code>
@@ -40,19 +42,29 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * ミュージック
+     * Lesson Contents
      */
     public final Contents CONTENTS = spring.kotlin.jooq.generated.jooq.tables.Contents.CONTENTS;
 
     /**
-     * lesson
+     * Lessons
      */
-    public final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
+    public final Lessons LESSONS = spring.kotlin.jooq.generated.jooq.tables.Lessons.LESSONS;
 
     /**
-     * ユーザー
+     * Users
      */
     public final Users USERS = spring.kotlin.jooq.generated.jooq.tables.Users.USERS;
+
+    /**
+     * ミュージック
+     */
+    public final UserDefinedContents USER_DEFINED_CONTENTS = spring.kotlin.jooq.generated.jooq.tables.UserDefinedContents.USER_DEFINED_CONTENTS;
+
+    /**
+     * User Defined Lessons
+     */
+    public final UserDefinedLessons USER_DEFINED_LESSONS = spring.kotlin.jooq.generated.jooq.tables.UserDefinedLessons.USER_DEFINED_LESSONS;
 
     /**
      * No further instances allowed
@@ -80,7 +92,9 @@ public class DefaultSchema extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Contents.CONTENTS,
-            Lesson.LESSON,
-            Users.USERS);
+            Lessons.LESSONS,
+            Users.USERS,
+            UserDefinedContents.USER_DEFINED_CONTENTS,
+            UserDefinedLessons.USER_DEFINED_LESSONS);
     }
 }

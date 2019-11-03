@@ -6,3 +6,8 @@ data class User(
         val password: String,
         val username: String
 )
+
+data class UserResponse(
+        val loginId: String,
+        val username: String
+)

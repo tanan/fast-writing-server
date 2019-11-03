@@ -1,6 +1,7 @@
 package com.example.fastwritingserver.auth
 
 import com.example.fastwritingserver.model.User
+import com.example.fastwritingserver.model.UserResponse
 import com.example.fastwritingserver.repository.UserRepository
 import com.squareup.moshi.Moshi
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,9 +25,12 @@ class AuthenticateService(private val repository: UserRepository): UserDetailsSe
     fun create(user: User): String =
         toJson(repository.create(User(null, user.username, securityConfig.encoder().encode(user.password), user.username)))
 
+    fun get(id: String): String =
+        toJson(repository.find(id))
+
     private fun toJson(user: User): String {
         val moshi = Moshi.Builder().build()
-        val adapter = moshi.adapter(User::class.java)
-        return adapter.toJson(user)
+        val adapter = moshi.adapter(UserResponse::class.java)
+        return adapter.toJson(UserResponse(user.loginId, user.username))
     }
 }

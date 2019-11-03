@@ -29,7 +29,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.ContentsRecord;
 
 
 /**
- * ミュージック
+ * Lesson Contents
  */
 @Generated(
     value = {
@@ -41,7 +41,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.ContentsRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Contents extends TableImpl<ContentsRecord> {
 
-    private static final long serialVersionUID = -546948729;
+    private static final long serialVersionUID = -239344508;
 
     /**
      * The reference instance of <code>contents</code>
@@ -102,7 +102,7 @@ public class Contents extends TableImpl<ContentsRecord> {
     }
 
     private Contents(Name alias, Table<ContentsRecord> aliased, Field<?>[] parameters) {
-        super(alias, null, aliased, parameters, DSL.comment("ミュージック"));
+        super(alias, null, aliased, parameters, DSL.comment("Lesson Contents"));
     }
 
     public <O extends Record> Contents(Table<O> child, ForeignKey<O, ContentsRecord> key) {
@@ -157,8 +157,8 @@ public class Contents extends TableImpl<ContentsRecord> {
         return Arrays.<ForeignKey<ContentsRecord, ?>>asList(Keys.FK_LESSON_ID);
     }
 
-    public Lesson lesson() {
-        return new Lesson(this, Keys.FK_LESSON_ID);
+    public Lessons lessons() {
+        return new Lessons(this, Keys.FK_LESSON_ID);
     }
 
     /**

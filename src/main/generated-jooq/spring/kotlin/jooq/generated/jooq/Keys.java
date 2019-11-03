@@ -12,10 +12,14 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.Internal;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
-import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Lessons;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedContents;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedLessons;
 import spring.kotlin.jooq.generated.jooq.tables.Users;
 import spring.kotlin.jooq.generated.jooq.tables.records.ContentsRecord;
-import spring.kotlin.jooq.generated.jooq.tables.records.LessonRecord;
+import spring.kotlin.jooq.generated.jooq.tables.records.LessonsRecord;
+import spring.kotlin.jooq.generated.jooq.tables.records.UserDefinedContentsRecord;
+import spring.kotlin.jooq.generated.jooq.tables.records.UserDefinedLessonsRecord;
 import spring.kotlin.jooq.generated.jooq.tables.records.UsersRecord;
 
 
@@ -38,22 +42,28 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<ContentsRecord, Integer> IDENTITY_CONTENTS = Identities0.IDENTITY_CONTENTS;
-    public static final Identity<LessonRecord, Integer> IDENTITY_LESSON = Identities0.IDENTITY_LESSON;
+    public static final Identity<LessonsRecord, Integer> IDENTITY_LESSONS = Identities0.IDENTITY_LESSONS;
     public static final Identity<UsersRecord, Integer> IDENTITY_USERS = Identities0.IDENTITY_USERS;
+    public static final Identity<UserDefinedContentsRecord, Integer> IDENTITY_USER_DEFINED_CONTENTS = Identities0.IDENTITY_USER_DEFINED_CONTENTS;
+    public static final Identity<UserDefinedLessonsRecord, Integer> IDENTITY_USER_DEFINED_LESSONS = Identities0.IDENTITY_USER_DEFINED_LESSONS;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<ContentsRecord> KEY_CONTENTS_PRIMARY = UniqueKeys0.KEY_CONTENTS_PRIMARY;
-    public static final UniqueKey<LessonRecord> KEY_LESSON_PRIMARY = UniqueKeys0.KEY_LESSON_PRIMARY;
+    public static final UniqueKey<LessonsRecord> KEY_LESSONS_PRIMARY = UniqueKeys0.KEY_LESSONS_PRIMARY;
     public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = UniqueKeys0.KEY_USERS_PRIMARY;
+    public static final UniqueKey<UserDefinedContentsRecord> KEY_USER_DEFINED_CONTENTS_PRIMARY = UniqueKeys0.KEY_USER_DEFINED_CONTENTS_PRIMARY;
+    public static final UniqueKey<UserDefinedLessonsRecord> KEY_USER_DEFINED_LESSONS_PRIMARY = UniqueKeys0.KEY_USER_DEFINED_LESSONS_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<ContentsRecord, LessonRecord> FK_LESSON_ID = ForeignKeys0.FK_LESSON_ID;
+    public static final ForeignKey<ContentsRecord, LessonsRecord> FK_LESSON_ID = ForeignKeys0.FK_LESSON_ID;
+    public static final ForeignKey<UserDefinedContentsRecord, UserDefinedLessonsRecord> FK_USER_DEFINED_LESSON_ID = ForeignKeys0.FK_USER_DEFINED_LESSON_ID;
+    public static final ForeignKey<UserDefinedLessonsRecord, UsersRecord> FK_USER_ID = ForeignKeys0.FK_USER_ID;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -61,17 +71,23 @@ public class Keys {
 
     private static class Identities0 {
         public static Identity<ContentsRecord, Integer> IDENTITY_CONTENTS = Internal.createIdentity(Contents.CONTENTS, Contents.CONTENTS.ID);
-        public static Identity<LessonRecord, Integer> IDENTITY_LESSON = Internal.createIdentity(Lesson.LESSON, Lesson.LESSON.ID);
+        public static Identity<LessonsRecord, Integer> IDENTITY_LESSONS = Internal.createIdentity(Lessons.LESSONS, Lessons.LESSONS.ID);
         public static Identity<UsersRecord, Integer> IDENTITY_USERS = Internal.createIdentity(Users.USERS, Users.USERS.ID);
+        public static Identity<UserDefinedContentsRecord, Integer> IDENTITY_USER_DEFINED_CONTENTS = Internal.createIdentity(UserDefinedContents.USER_DEFINED_CONTENTS, UserDefinedContents.USER_DEFINED_CONTENTS.ID);
+        public static Identity<UserDefinedLessonsRecord, Integer> IDENTITY_USER_DEFINED_LESSONS = Internal.createIdentity(UserDefinedLessons.USER_DEFINED_LESSONS, UserDefinedLessons.USER_DEFINED_LESSONS.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<ContentsRecord> KEY_CONTENTS_PRIMARY = Internal.createUniqueKey(Contents.CONTENTS, "KEY_contents_PRIMARY", Contents.CONTENTS.ID);
-        public static final UniqueKey<LessonRecord> KEY_LESSON_PRIMARY = Internal.createUniqueKey(Lesson.LESSON, "KEY_lesson_PRIMARY", Lesson.LESSON.ID);
+        public static final UniqueKey<LessonsRecord> KEY_LESSONS_PRIMARY = Internal.createUniqueKey(Lessons.LESSONS, "KEY_lessons_PRIMARY", Lessons.LESSONS.ID);
         public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = Internal.createUniqueKey(Users.USERS, "KEY_users_PRIMARY", Users.USERS.ID);
+        public static final UniqueKey<UserDefinedContentsRecord> KEY_USER_DEFINED_CONTENTS_PRIMARY = Internal.createUniqueKey(UserDefinedContents.USER_DEFINED_CONTENTS, "KEY_user_defined_contents_PRIMARY", UserDefinedContents.USER_DEFINED_CONTENTS.ID);
+        public static final UniqueKey<UserDefinedLessonsRecord> KEY_USER_DEFINED_LESSONS_PRIMARY = Internal.createUniqueKey(UserDefinedLessons.USER_DEFINED_LESSONS, "KEY_user_defined_lessons_PRIMARY", UserDefinedLessons.USER_DEFINED_LESSONS.ID);
     }
 
     private static class ForeignKeys0 {
-        public static final ForeignKey<ContentsRecord, LessonRecord> FK_LESSON_ID = Internal.createForeignKey(spring.kotlin.jooq.generated.jooq.Keys.KEY_LESSON_PRIMARY, Contents.CONTENTS, "fk_lesson_id", Contents.CONTENTS.LESSON_ID);
+        public static final ForeignKey<ContentsRecord, LessonsRecord> FK_LESSON_ID = Internal.createForeignKey(spring.kotlin.jooq.generated.jooq.Keys.KEY_LESSONS_PRIMARY, Contents.CONTENTS, "fk_lesson_id", Contents.CONTENTS.LESSON_ID);
+        public static final ForeignKey<UserDefinedContentsRecord, UserDefinedLessonsRecord> FK_USER_DEFINED_LESSON_ID = Internal.createForeignKey(spring.kotlin.jooq.generated.jooq.Keys.KEY_USER_DEFINED_LESSONS_PRIMARY, UserDefinedContents.USER_DEFINED_CONTENTS, "fk_user_defined_lesson_id", UserDefinedContents.USER_DEFINED_CONTENTS.USER_DEFINED_LESSON_ID);
+        public static final ForeignKey<UserDefinedLessonsRecord, UsersRecord> FK_USER_ID = Internal.createForeignKey(spring.kotlin.jooq.generated.jooq.Keys.KEY_USERS_PRIMARY, UserDefinedLessons.USER_DEFINED_LESSONS, "fk_user_id", UserDefinedLessons.USER_DEFINED_LESSONS.USER_ID);
     }
 }

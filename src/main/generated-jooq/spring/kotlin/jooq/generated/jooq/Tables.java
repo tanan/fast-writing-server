@@ -7,7 +7,9 @@ package spring.kotlin.jooq.generated.jooq;
 import javax.annotation.Generated;
 
 import spring.kotlin.jooq.generated.jooq.tables.Contents;
-import spring.kotlin.jooq.generated.jooq.tables.Lesson;
+import spring.kotlin.jooq.generated.jooq.tables.Lessons;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedContents;
+import spring.kotlin.jooq.generated.jooq.tables.UserDefinedLessons;
 import spring.kotlin.jooq.generated.jooq.tables.Users;
 
 
@@ -25,17 +27,27 @@ import spring.kotlin.jooq.generated.jooq.tables.Users;
 public class Tables {
 
     /**
-     * ミュージック
+     * Lesson Contents
      */
     public static final Contents CONTENTS = spring.kotlin.jooq.generated.jooq.tables.Contents.CONTENTS;
 
     /**
-     * lesson
+     * Lessons
      */
-    public static final Lesson LESSON = spring.kotlin.jooq.generated.jooq.tables.Lesson.LESSON;
+    public static final Lessons LESSONS = spring.kotlin.jooq.generated.jooq.tables.Lessons.LESSONS;
 
     /**
-     * ユーザー
+     * Users
      */
     public static final Users USERS = spring.kotlin.jooq.generated.jooq.tables.Users.USERS;
+
+    /**
+     * ミュージック
+     */
+    public static final UserDefinedContents USER_DEFINED_CONTENTS = spring.kotlin.jooq.generated.jooq.tables.UserDefinedContents.USER_DEFINED_CONTENTS;
+
+    /**
+     * User Defined Lessons
+     */
+    public static final UserDefinedLessons USER_DEFINED_LESSONS = spring.kotlin.jooq.generated.jooq.tables.UserDefinedLessons.USER_DEFINED_LESSONS;
 }
