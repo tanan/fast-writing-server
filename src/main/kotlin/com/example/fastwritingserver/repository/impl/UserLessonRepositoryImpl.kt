@@ -8,7 +8,7 @@ import spring.kotlin.jooq.generated.jooq.Tables.USER_DEFINED_LESSONS
 import spring.kotlin.jooq.generated.jooq.tables.records.UserDefinedLessonsRecord
 
 @Repository
-class UserLessonRepository(private val context: DSLContext) : UserLessonRepository {
+class UserLessonRepositoryImpl(private val context: DSLContext) : UserLessonRepository {
     override fun findAll(userId: Int): List<Lesson> {
         return context.select()
                 .from(USER_DEFINED_LESSONS)
