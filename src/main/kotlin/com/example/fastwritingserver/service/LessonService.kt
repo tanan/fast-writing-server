@@ -4,6 +4,8 @@ import com.example.fastwritingserver.model.Content
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.repository.ContentsRepository
 import com.example.fastwritingserver.repository.LessonRepository
+import com.example.fastwritingserver.repository.UserContentsRepository
+import com.example.fastwritingserver.repository.UserLessonRepository
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -12,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class LessonService(
-        private val lessonRepository: LessonRepository, private val contentsRepository: ContentsRepository
+        private val lessonRepository: LessonRepository, private val contentsRepository: ContentsRepository,
+        private val userLessonRepository: UserLessonRepository, private val userContentsRepository: UserContentsRepository
 ) {
     @Transactional
     fun getAll() : String {
@@ -23,9 +26,24 @@ class LessonService(
     }
 
     @Transactional
+    fun getAll(userId: Int) : String {
+        val moshi = Moshi.Builder().build()
+        val type = Types.newParameterizedType(List::class.java,Lesson::class.java)
+        val listAdapter:JsonAdapter<List<Lesson>> = moshi.adapter(type)
+        return listAdapter.toJson(userLessonRepository.findAll(userId))
+    }
+
+    @Transactional
     fun get(id: Int) : String {
         val lesson = lessonRepository.find(id)
         val contents = contentsRepository.findByLessonID(lesson.id)
+        return toJson(lesson, contents)
+    }
+
+    @Transactional
+    fun get(id: Int, userId: Int): String {
+        val lesson = userLessonRepository.find(id, userId)
+        val contents = userContentsRepository.findByLessonID(lesson.id)
         return toJson(lesson, contents)
     }
 
@@ -36,8 +54,20 @@ class LessonService(
     }
 
     @Transactional
+    fun create(userId: Int, lesson: Lesson): String {
+        val lessonWithId = userLessonRepository.create(userId, lesson)
+        return toJson(lessonWithId, listOf())
+    }
+
+    @Transactional
     fun createContent(lessonId: Int, content: Content): String {
         val contentWithId = contentsRepository.create(lessonId, content)
+        return toJson(contentWithId)
+    }
+
+    @Transactional
+    fun createUserContent(lessonId: Int, content: Content): String {
+        val contentWithId = userContentsRepository.create(lessonId, content)
         return toJson(contentWithId)
     }
 

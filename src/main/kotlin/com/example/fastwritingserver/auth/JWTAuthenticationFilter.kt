@@ -1,6 +1,7 @@
 package com.example.fastwritingserver.auth
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.security.authentication.AuthenticationManager
@@ -33,8 +34,12 @@ class JWTAuthenticationFilter(authenticationManager: AuthenticationManager): Use
                                           chain: FilterChain?,
                                           authResult: Authentication?) {
         val expiration = LocalDateTime.now().plusHours(1).atZone(ZoneId.systemDefault())
+        val claims = Jwts.claims()
+        claims.put(Claims.SUBJECT, (authResult?.principal as UserDetail).id)
+        claims.put("name", (authResult?.principal as UserDetail).username)
         val token = Jwts.builder()
-                .setSubject((authResult?.principal as UserDetail).username)
+//                .setSubject((authResult?.principal as UserDetail).username)
+                .setClaims(claims)
                 .setExpiration(Date.from(expiration.toInstant()))
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
                 .compact()

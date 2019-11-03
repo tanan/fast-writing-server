@@ -6,6 +6,7 @@ import com.example.fastwritingserver.model.Content
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.service.LessonService
 import org.springframework.http.MediaType
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*
 class LessonController(private val lessonService: LessonService) {
     @GetMapping("")
     fun getAll(): String {
-
         return lessonService.getAll()
     }
 
