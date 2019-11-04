@@ -65,6 +65,9 @@ insert into lessons (id, title, description) value
 (9, 'Lesson9', 'description9'),
 (14, 'Lesson14', 'description14');
 
+insert into user_defined_lessons (id, user_id, title, description) value
+(1, 1, 'Your Lesson', 'your custom lesson 1');
+
 insert into contents (lesson_id, jp_text, en_text) value
 (1, "私は働きます", "I work"),
 (1, "彼は毎朝6時におきます", "He get up at 6:00 every day."),
@@ -134,3 +137,8 @@ insert into contents (lesson_id, jp_text, en_text) value
 (14, "貴社との共同プロジェクトを展開する機会を得たことを光栄に思っております。", "We are honored to have this oppotunity to work with you on the project."),
 (14, "率直に申し上げますと、我々は早急に新しい手を打つべきです。", "To be frank, we need to take new measures immediately."),
 (14, "必要な手はずは全て整うようにしてあります。", "We are prepared to do whatever is necessary.");
+
+insert into user_defined_contents (user_defined_lesson_id, jp_text, en_text) value
+(1, "私は働きます", "I work"),
+(1, "彼は毎朝6時におきます", "He get up at 6:00 every day."),
+(1, "あなたは何も持っていない", "You have nothing.");
