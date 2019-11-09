@@ -1,8 +1,10 @@
 package com.example.fastwritingserver.controller
 
 import com.example.fastwritingserver.auth.AuthenticateService
+import com.example.fastwritingserver.controller.request.LessonContentRegisterRequest
 import com.example.fastwritingserver.controller.request.LessonRegisterRequest
 import com.example.fastwritingserver.controller.request.UserRegisterRequest
+import com.example.fastwritingserver.model.Content
 import com.example.fastwritingserver.model.Lesson
 import com.example.fastwritingserver.model.User
 import com.example.fastwritingserver.service.LessonService
@@ -28,13 +30,25 @@ class UserController(val authenticateService: AuthenticateService, val lessonSer
         return lessonService.getAll(id)
     }
 
-    @GetMapping("/{id}/lessons/{lessonId}/contents")
-    fun get(@PathVariable(value = "id") id:Int, @PathVariable(value = "lessonId") lessonId: Int): String {
+    @GetMapping("/{id}/lessons/{lessonId}")
+    fun getLesson(@PathVariable(value = "id") id:Int, @PathVariable(value = "lessonId") lessonId: Int): String {
         return lessonService.get(lessonId, id)
     }
 
-    @PostMapping("/{id}/lessons/create", consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun post(@PathVariable(value = "id") id:Int, @RequestBody request: LessonRegisterRequest): String {
+    @GetMapping("/{id}/lessons/{lessonId}/contents")
+    fun getLessonContents(@PathVariable(value = "id") id:Int, @PathVariable(value = "lessonId") lessonId: Int): String {
+        return lessonService.get(lessonId, id)
+    }
+
+    @PostMapping("/{id}/lessons", consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun postLesson(@PathVariable(value = "id") id:Int, @RequestBody request: LessonRegisterRequest): String {
         return lessonService.create(id, Lesson(0, request.title, request.description, listOf()))
+    }
+
+    @PostMapping("/{id}/lessons/{lessonId}/contents")
+    fun postLessonContent(@PathVariable(value = "id") id:Int,
+                    @PathVariable(value = "lessonId") lessonId: Int,
+                    @RequestBody request: LessonContentRegisterRequest): String {
+        return lessonService.createUserContent(lessonId, Content(0, request.japaneseText, request.englishText))
     }
 }

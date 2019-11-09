@@ -80,7 +80,7 @@ class LessonService(
     private fun toJson(lesson: Lesson, contents: List<Content>): String {
         val moshi = Moshi.Builder().build()
         val adapter = moshi.adapter(Lesson::class.java)
-        return adapter.toJson(Lesson(lesson.id, lesson.title, "", contents))
+        return adapter.toJson(Lesson(lesson.id, lesson.title, lesson.description, contents))
     }
 
     private fun toJson(content: Content): String {
