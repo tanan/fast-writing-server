@@ -9,6 +9,7 @@ data class LessonRegisterRequest @JsonCreator constructor(
 )
 
 data class LessonContentRegisterRequest @JsonCreator constructor(
+        val id: Int?,
         @field:Json(name = "jp_text")
         val japaneseText: String,
         @field:Json(name = "en_text")

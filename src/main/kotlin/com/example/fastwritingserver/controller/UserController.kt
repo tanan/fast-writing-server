@@ -45,11 +45,10 @@ class UserController(val authenticateService: AuthenticateService, val lessonSer
         return lessonService.create(id, Lesson(0, request.title, request.description, listOf()))
     }
 
-    @PostMapping("/{id}/lessons/{lessonId}/contents/{contentId}", consumes = [MediaType.APPLICATION_JSON_VALUE])
+    @PostMapping("/{id}/lessons/{lessonId}/contents", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun postLessonContent(@PathVariable(value = "id") id:Int,
                           @PathVariable(value = "lessonId") lessonId: Int,
-                          @PathVariable(value = "contentId") contentId: Int,
                           @RequestBody request: LessonContentRegisterRequest): String {
-        return lessonService.createUserContent(lessonId, Content(contentId, request.japaneseText, request.englishText))
+        return lessonService.createUserContent(request.id, lessonId, Content(request.id?.let { it } ?: 0, request.japaneseText, request.englishText))
     }
 }

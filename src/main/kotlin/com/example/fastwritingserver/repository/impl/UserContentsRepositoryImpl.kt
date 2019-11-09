@@ -9,7 +9,7 @@ import spring.kotlin.jooq.generated.jooq.tables.records.UserDefinedContentsRecor
 
 @Repository
 class UserContentsRepositoryImpl(private val context: DSLContext): UserContentsRepository {
-    override fun findByLessonID(id: Int): List<Content> {
+    override fun findByLessonId(id: Int): List<Content> {
         return context.select()
                 .from(USER_DEFINED_CONTENTS)
                 .where(USER_DEFINED_CONTENTS.USER_DEFINED_LESSON_ID.eq(id))
@@ -25,6 +25,24 @@ class UserContentsRepositoryImpl(private val context: DSLContext): UserContentsR
                 .returning()
                 .fetchOne()
                 .let { toModel(it) }
+    }
+
+    override fun update(lessonId: Int, content: Content) {
+        context.update(USER_DEFINED_CONTENTS)
+                .set(USER_DEFINED_CONTENTS.JP_TEXT, content.japaneseText)
+                .set(USER_DEFINED_CONTENTS.EN_TEXT, content.englishText)
+                .where(USER_DEFINED_CONTENTS.USER_DEFINED_LESSON_ID.eq(lessonId))
+                .and(USER_DEFINED_CONTENTS.ID.eq(content.id))
+                .execute()
+    }
+
+    override fun findByIdAndLessonId(id: Int, lessonId: Int): Content {
+        return context.select()
+                .from(USER_DEFINED_CONTENTS)
+                .where(USER_DEFINED_CONTENTS.USER_DEFINED_LESSON_ID.eq(lessonId))
+                .and(USER_DEFINED_CONTENTS.ID.eq(id))
+                .fetchOne()
+                .map { toModel(it as UserDefinedContentsRecord) }
     }
 
     private fun toModel(r: UserDefinedContentsRecord): Content {

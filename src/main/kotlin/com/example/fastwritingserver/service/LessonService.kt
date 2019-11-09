@@ -43,7 +43,7 @@ class LessonService(
     @Transactional
     fun get(id: Int, userId: Int): String {
         val lesson = userLessonRepository.find(id, userId)
-        val contents = userContentsRepository.findByLessonID(lesson.id)
+        val contents = userContentsRepository.findByLessonId(lesson.id)
         return toJson(lesson, contents)
     }
 
@@ -66,9 +66,9 @@ class LessonService(
     }
 
     @Transactional
-    fun createUserContent(lessonId: Int, content: Content): String {
-        val contentWithId = userContentsRepository.create(lessonId, content)
-        return toJson(contentWithId)
+    fun createUserContent(id: Int?, lessonId: Int, content: Content): String {
+        val contentWithId = id?.let { userContentsRepository.update(lessonId, content) } ?: userContentsRepository.create(lessonId, content)
+        return "OK"
     }
 
     fun list(id: Int) : String {
