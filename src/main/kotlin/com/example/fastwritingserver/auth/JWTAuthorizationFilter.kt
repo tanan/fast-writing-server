@@ -3,7 +3,6 @@ package com.example.fastwritingserver.auth
 import io.jsonwebtoken.Jwts
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 import java.util.*
@@ -20,9 +19,7 @@ class JWTAuthorizationFilter(authenticationManager: AuthenticationManager) : Bas
             chain.doFilter(request, response)
             return
         }
-
-        val authentication = getAuthentication(request)
-        SecurityContextHolder.getContext().authentication = authentication
+        SecurityContextHolder.getContext().authentication = getAuthentication(request)
         chain.doFilter(request, response)
     }
 

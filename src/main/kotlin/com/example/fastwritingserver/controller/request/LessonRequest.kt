@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.squareup.moshi.Json
 
 data class LessonRegisterRequest @JsonCreator constructor(
+        val id: Int?,
         val title: String,
         val description: String
 )
